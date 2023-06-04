@@ -1,6 +1,7 @@
 "use client";
 import Link from "next/link";
 import styles from "./page.module.css";
+import DarkModeToggle from "../DarkModeToggle/DarkModeToggle";
 
 const links = [
   {
@@ -42,6 +43,7 @@ const Navbar = () => {
         Mamamia
       </Link>
       <div className={styles.links}>
+        <DarkModeToggle />
         {links.map((link) => {
           const { id, title, url } = link;
           return (
