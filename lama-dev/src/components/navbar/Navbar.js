@@ -48,9 +48,11 @@ const Navbar = () => {
           const { id, title, url } = link;
           return (
             <>
-              <Link key-={id} href={url} className={styles.link}>
-                {title}
-              </Link>
+              <div key={id}>
+                <Link href={url} className={styles.link}>
+                  {title}
+                </Link>
+              </div>
             </>
           );
         })}
