@@ -40,7 +40,7 @@
 }
 
 .title {
-  margin: 0;
+  margin: 0px;
   line-height: 1.15;
   font-size: 4rem;
 }
@@ -51,7 +51,7 @@
 }
 
 .description {
-  margin: 4rem 0;
+  margin: 1rem 0;
   line-height: 1.5;
   font-size: 1.5rem;
 }
@@ -136,4 +136,12 @@
 .mainnav li {
   margin: 0 1.5rem;
   font-weight: bold;
+}
+
+.myImg {
+  border-radius: 10px;
+}
+
+.imgWrapper {
+  margin: 40px 0;
 }
