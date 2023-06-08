@@ -10,7 +10,10 @@
 .blogItemh3 {
   cursor: pointer;
 }
+.blogItemh1 {
+  text-transform: capitalize;
+}
 
 .blogPostItem {
-  width: 65%;
+  width: 50%;
 }
