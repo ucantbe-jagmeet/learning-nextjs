@@ -7,7 +7,7 @@ const Blog = () => {
     <main className={styles.mainBlog}>
       <div>
         <Link href="/blogpost/learn-javascript">
-          <h3 className={styles.blogItemh3}>How to learn javascript in 2022</h3>
+          <h2 className={styles.blogItemh3}>How to learn javascript in 2022</h2>
           <p>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam,
             nisi numquam omnis eaque quam libero quae laudantium illum dicta
