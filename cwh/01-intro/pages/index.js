@@ -1,5 +1,5 @@
+/* eslint-disable @next/next/no-img-element */
 import Head from "next/head";
-import Image from "next/image";
 import styles from "../styles/Home.module.css";
 
 export default function Home() {
@@ -17,19 +17,27 @@ export default function Home() {
         <h1 className={styles.title}>Hunting Coder</h1>
 
         <div className={styles.imgWrapper}>
-          <Image
+          {/* <Image
             src="/homeimg.avif"
             alt=""
             width={500}
             height={300}
             className={styles.myImg}
+          /> */}
+
+          <img
+            src="/homeimg.avif"
+            alt=""
+            className={styles.myImg}
+            width={500}
+            height={300}
           />
         </div>
         <p className={styles.description}>
           By the coders , For the coders , To the coders
         </p>
 
-        <div className={styles.grid}>
+        {/* <div className={styles.grid}>
           <a href="https://nextjs.org/docs" className={styles.card}>
             <h2>Documentation &rarr;</h2>
             <p>Find in-depth information about Next.js features and API.</p>
@@ -57,7 +65,7 @@ export default function Home() {
               Instantly deploy your Next.js site to a public URL with Vercel.
             </p>
           </a>
-        </div>
+        </div> */}
       </main>
 
       <footer className={styles.footer}></footer>
