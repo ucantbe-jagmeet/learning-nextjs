@@ -4,15 +4,15 @@ import styles from "../../styles/Blog.module.css";
 
 const Slug = (props) => {
   const [blog, setBlog] = useState(props.myBlog);
-
+  function createMarkup(c) {
+    return {__html: c};
+  }
   return (
     <main className={styles.mainBlog}>
       <div className={styles.blogPostItem}>
       <h1>{blog && blog.title}</h1>
       <hr />
-      <div>
-        {blog && blog.content}
-      </div>
+      { blog && <div dangerouslySetInnerHTML={createMarkup(blog.content)}></div>}
       </div>
     </main>
   );
@@ -36,4 +36,4 @@ export async function getStaticProps(context) {
   };
 }
 
-export default Slug;
+export default Slug; 

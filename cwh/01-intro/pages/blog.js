@@ -13,12 +13,12 @@ const Blog = (props) => {
     <main className={styles.mainBlog}>
       <div className={styles.blogPostItem}>
         {blogs.map((blog, index) => {
-          const { title, content, author, slug } = blog;
+          const { title, metadesc, author, slug } = blog;
 
           return (
             <Link href={`/blogpost/${slug}`} key={index}>
               <h3 className={styles.blogItemh3}>{title}</h3>
-              <p>{content.slice(0, 130)}...</p>
+              <p>{metadesc.slice(0, 130)}...</p>
             </Link>
           );
         })}
