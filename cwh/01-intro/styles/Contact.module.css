@@ -1,0 +1,36 @@
+.container{
+    max-width: 100vw;
+    height: 35vh;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+    align-items: center;
+}
+
+.form{
+    width: 60%;
+}
+.mb3{
+    margin-bottom: 1.5rem;
+    display: flex;
+    justify-content: space-between ;
+
+}
+
+.formlabel{
+    margin: 0 2rem;
+}
+
+.button{
+    min-width:10rem;
+    border-radius: 0.3rem;
+    border: none;
+    background: rgb(46, 94, 41);
+    margin: 1rem 10rem;
+    outline: none;
+    letter-spacing: 2px;
+    font-size:0.8rem;
+    padding: 10px 20px;
+    cursor: pointer;
+}
