@@ -1,15 +1,15 @@
-import * as fs from "fs";
+import * as fs from 'fs';
 
 export default async function handler(req, res) {
-  let data = await fs.promises.readdir("blogData");
+	let data = await fs.promises.readdir('blogData');
+	data = data.slice(0, Number(req.query.count));
+	let allBlogs = [];
 
-  let allBlogs = [];
+	for (let i = 0; i < data.length; i++) {
+		const item = data[i];
+		let myFile = await fs.promises.readFile('blogdata/' + item);
 
-  for (let i = 0; i < data.length; i++) {
-    const item = data[i];
-    let myFile = await fs.promises.readFile("blogdata/" + item);
-
-    allBlogs.push(JSON.parse(myFile));
-  }
-  res.status(200).json(allBlogs);
+		allBlogs.push(JSON.parse(myFile));
+	}
+	res.status(200).json(allBlogs);
 }
