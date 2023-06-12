@@ -6,3 +6,11 @@
 .center{
     text-align: center;
 }
+
+@media screen and (max-width: 600px) {
+    .container{
+        margin:45px auto;
+        max-width: 85vw; 
+    }
+  }
+  

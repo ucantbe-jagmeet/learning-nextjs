@@ -17,3 +17,19 @@
 .blogPostItem {
   width: 50%;
 }
+
+.container{
+  margin:45px auto;
+  max-width: 45vw; 
+}
+
+@media screen and (max-width: 600px) {
+  .blogPostItem {
+    width: 85%;
+    font-size: 1.2rem;
+  }
+  .blogItemh3 {
+    cursor: pointer;
+    font-size: 2rem;
+  }
+}
