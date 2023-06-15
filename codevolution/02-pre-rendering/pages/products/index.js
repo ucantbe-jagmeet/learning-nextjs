@@ -27,6 +27,6 @@ function ProductList({ products }) {
       props: {
         products: data
       },
-      revalidate: 30
+      revalidate: 10
     }
   }

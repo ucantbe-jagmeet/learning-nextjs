@@ -34,7 +34,6 @@ export async function getStaticProps(context) {
     revalidate: 10
   }
 }
-
 export async function getStaticPaths() {
   return {
     paths: [{ params: { productId: '1' } }],
