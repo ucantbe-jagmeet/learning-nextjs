@@ -15,11 +15,15 @@ function Navbar() {
             <a>Home</a>
           </Link>
         </li>
-        <li>
-          <Link href='/dashboard' legacyBehavior>
-            <a>Dashboard</a>
-          </Link>
-        </li>
+        {
+            session && (
+                <li>
+                    <Link href='/dashboard' legacyBehavior>
+                        <a>Dashboard</a>
+                    </Link>
+                </li>
+            )
+        }
         <li>
           <Link href='/blog' legacyBehavior>
             <a>Blog</a>
