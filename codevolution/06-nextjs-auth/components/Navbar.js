@@ -1,4 +1,6 @@
 import Link from 'next/link'
+import { signIn, signOut} from "next-auth/client"
+
 
 function Navbar() {
   return (
@@ -24,11 +26,22 @@ function Navbar() {
         </li>
 
         <li>
-          <a href='#'>Sign In</a>
+            <Link href='/api/auth/signin' legacyBehavior>  
+              <a onClick={e=>{
+                e.preventDefault()
+                signIn('github')
+              }}>Sign In</a>
+            </Link>
         </li>
         <li>
-          <a href='#'>Sign Out</a>
+            <Link href='/api/auth/signout' legacyBehavior>  
+            <a onClick={e=>{
+                e.preventDefault()
+                signOut()
+              }}>Sign Out</a>
+            </Link>
         </li>
+        
       </ul>
     </nav>
   )
