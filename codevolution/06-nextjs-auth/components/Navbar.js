@@ -7,18 +7,18 @@ function Navbar() {
         <a href='#'>NextAuth</a>
       </h1>
       <ul className='main-nav'>
-        <li>
-          <Link href='/'>
+      <li>
+          <Link href='/' legacyBehavior>
             <a>Home</a>
           </Link>
         </li>
         <li>
-          <Link href='/dashboard'>
+          <Link href='/dashboard' legacyBehavior>
             <a>Dashboard</a>
           </Link>
         </li>
         <li>
-          <Link href='/blog'>
+          <Link href='/blog' legacyBehavior>
             <a>Blog</a>
           </Link>
         </li>
