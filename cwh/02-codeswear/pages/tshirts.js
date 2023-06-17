@@ -6,4 +6,4 @@ const Tshirts = () => {
   )
 }
 
-export default Tshirsn
+export default Tshirts
