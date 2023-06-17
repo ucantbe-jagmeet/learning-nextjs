@@ -1,6 +1,4 @@
 import Head from 'next/head'
-import Navbar from '../components/Navbar'
-import Footer from '../components/Footer'
 
 export default function Home() {
   return (
@@ -10,8 +8,6 @@ export default function Home() {
         <meta name="description" content="CodesWear.com - wear" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-
-      <Navbar/>
 
         <div className=''>
         {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -98,9 +94,6 @@ export default function Home() {
        
       </div>
   </section>
-
-      <Footer/>
-
 
     </div>
   )
