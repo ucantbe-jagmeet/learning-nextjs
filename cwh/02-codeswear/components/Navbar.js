@@ -98,7 +98,10 @@ const ref = useRef()
               </div>
               </li>
             </ol>
-            <button class="flex mx-auto mt-16 text-white bg-pink-500 border-0 py-1 px-6 focus:outline-none hover:bg-pink-600 rounded text-sm">Checkout</button>
+         <div className="flex">
+             <button className="flex mx-auto text-white bg-pink-500 border-0 py-1 px-6 focus:outline-none hover:bg-pink-600 rounded text-sm">Checkout</button>
+              <button className="flex mx-auto  text-white bg-pink-500 border-0 py-1 px-6 focus:outline-none hover:bg-pink-600 rounded text-sm">Clear Cart</button>
+         </div>
           </div>
     </div>
   )
