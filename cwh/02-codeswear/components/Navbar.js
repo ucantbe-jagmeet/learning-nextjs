@@ -36,7 +36,7 @@ const ref = useRef()
              <AiOutlineShoppingCart className='text-xl md:text-2xl text-pink-600'/>
          </div>
 
-        <div ref={ref} className="sideCart w-72 h-[100vh] absolute top-0 right-0 bg-pink-100 py-10 px-8 transform transition-transform translate-x-full ">
+        <div ref={ref} className="sideCart w-72 h-[100vh] absolute top-0 right-0 bg-pink-100 py-10 px-8 transform transition-transform translate-x-full shadow-l-">
           <h2 className='font-bold text-xl text-center'>Shopping Cart</h2>
           <span onClick={toggleCart} className='absolute top-3 right-3 cursor-pointer text-2xl text-pink-500' >
             <AiFillCloseCircle/>
