@@ -2,6 +2,7 @@ import React, { useRef } from 'react'
 import Logo from './Logo'
 import Link from 'next/link'
 import { AiOutlineShoppingCart, AiFillCloseCircle , AiFillPlusCircle , AiFillMinusCircle} from "react-icons/ai"
+import { MdAccountCircle} from "react-icons/md"
 
 const Navbar = ({ cart, addToCart, removeFromCart, clearCart, subTotal }) => {
 
@@ -25,15 +26,18 @@ const ref = useRef()
             </Link>
          </div>
          <div className="nav">
-            <ul className='flex items-center space-x-5 font-bold text-sm md:text-md'>
+            <ul className='flex items-center space-x-5 font-bold text-sm md:text-md '>
                 <Link href="/tshirts"><li>Tshirts</li></Link>
                 <Link href="/hoodies"><li>Hoodies</li></Link>
                 <Link href="/stickers"><li>Stickers</li></Link>
                 <Link href="/mugs"><li>Mugs</li></Link>
             </ul>
          </div>
-         <div  onClick={toggleCart} className="cart absolute right-5 top-3 cursor-pointer" >
-             <AiOutlineShoppingCart className='text-xl md:text-2xl text-pink-600'/>
+         <div className="cart absolute justify-center right-5 top-3 cursor-pointer flex gap-4" >
+		 	<Link href="/login">
+			 	<MdAccountCircle className='text-xl md:text-2xl ' />
+			</Link>
+             <AiOutlineShoppingCart className='text-xl md:text-2xl '  onClick={toggleCart} />
          </div>
 
         <div ref={ref} className="sideCart w-72 h-[100vh] absolute top-0 right-0 bg-pink-100 py-10 px-8 transform transition-transform translate-x-full shadow-l-">
