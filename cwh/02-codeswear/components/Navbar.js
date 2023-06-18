@@ -51,10 +51,12 @@ const ref = useRef()
 						</div>
 						<div className='w-1/3 font-semibold flex items-center justify-center '>
 							<AiFillMinusCircle className='mx-1 text-lg text-pink-500 cursor-pointer' onClick={()=>{
-								removeFromCart(cart[k].itemCode, 1, cart[k].price, cart[k].name , cart[k].size, cart[k].variant )
+								removeFromCart(k, 1, cart[k].price, cart[k].name , cart[k].size, cart[k].variant )
 							}}/>
 							{cart[k].qty}
-							<AiFillPlusCircle className='mx-1 text-lg text-pink-500 cursor-pointer' onClick={()=>{}}/>
+							<AiFillPlusCircle className='mx-1 text-lg text-pink-500 cursor-pointer' onClick={()=>{
+								addToCart(k, 1, cart[k].price, cart[k].name , cart[k].size, cart[k].variant )
+							}}/>
 						</div>
 					</div>
               </li>
