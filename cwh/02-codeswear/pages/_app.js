@@ -12,14 +12,14 @@ function MyApp({ Component, pageProps }) {
     try {
       if(localStorage.getItem("cart")){
       setCart(JSON.parse(localStorage.getItem("cart")))
+      saveCart(JSON.parse(localStorage.getItem("cart")))
       } 
     } catch (error) {
       console.log(error);
       localStorage.clear()
     }
-
   },[])
-
+  
   const saveCart = (myCart)=>{
     localStorage.setItem("cart", JSON.stringify(myCart))
     let subt= 0
@@ -51,8 +51,8 @@ function MyApp({ Component, pageProps }) {
       }else{
         newCart[itemCode] = {qty:1, price, name, size, variant}
       }
-      setCart(newCart)
       saveCart(newCart)
+      setCart(newCart)
     }
   
   const clearCart = ()=>{

@@ -18,7 +18,7 @@ const ref = useRef()
   }
 
   return (
-    <div className='flex justify-center flex-col items-center md:flex-row md:justify-start  shadow-md py-2'> 
+    <div className='flex justify-center flex-col items-center md:flex-row md:justify-start  shadow-md py-2 sticky top-0 z-10 bg-white'> 
          <div className="logo mx-5">
             <Link href="/"> 
                 <Logo/>
@@ -36,7 +36,7 @@ const ref = useRef()
              <AiOutlineShoppingCart className='text-xl md:text-2xl text-pink-600'/>
          </div>
 
-        <div ref={ref} className="sideCart w-72 h-full absolute top-0 right-0 bg-pink-100 py-10 px-8 transform transition-transform translate-x-full z-10">
+        <div ref={ref} className="sideCart w-72 h-[100vh] absolute top-0 right-0 bg-pink-100 py-10 px-8 transform transition-transform translate-x-full ">
           <h2 className='font-bold text-xl text-center'>Shopping Cart</h2>
           <span onClick={toggleCart} className='absolute top-3 right-3 cursor-pointer text-2xl text-pink-500' >
             <AiFillCloseCircle/>
@@ -62,10 +62,11 @@ const ref = useRef()
               </li>
 			  })}
             </ol>
-         <div className="flex mt-5">
-             <button className="flex mx-auto text-white bg-pink-500 border-0 py-1 px-6 focus:outline-none hover:bg-pink-600 rounded text-sm">Checkout</button>
-              <button onClick={clearCart} className="flex mx-auto  text-white bg-pink-500 border-0 py-1 px-6 focus:outline-none hover:bg-pink-600 rounded text-sm">Clear Cart</button>
-         </div>
+			  <div className='font-semibold my-2'> Subtotal: ₹{subTotal}</div>
+			<div className="flex mt-5">
+				<Link href="/checkout"><button className="flex mx-auto text-white bg-pink-500 border-0 py-1 px-6 focus:outline-none hover:bg-pink-600 rounded text-sm" >Checkout</button></Link>
+				<button onClick={clearCart} className="flex mx-auto  text-white bg-pink-500 border-0 py-1 px-6 focus:outline-none hover:bg-pink-600 rounded text-sm">Clear Cart</button>
+			</div>
           </div>
     </div>
   )

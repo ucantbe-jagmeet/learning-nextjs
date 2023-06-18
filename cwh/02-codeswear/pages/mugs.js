@@ -7,7 +7,7 @@ const Mugs = () => {
     <div>
         <section className="text-gray-600 body-font">
           <div className="container px-5 py-24 mx-auto">
-            <div className="flex flex-wrap ">
+            <div className="flex flex-wrap justify-center">
               <Link href="/product/wear-the-code" className="lg:w-1/4 md:w-1/2 p-4 w-full ">
                     <div className='m-3 shadow-md p-3' >
                       <a className="block relative rounded overflow-hidden">
