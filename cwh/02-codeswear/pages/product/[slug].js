@@ -1,7 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import { useRouter } from "next/router";
 import { useState } from "react";
-const Post = () => {
+const Post = ({addToCart}) => {
     const router = useRouter()
     const { slug } = router.query
     const [pin, setPin] = useState();
@@ -18,7 +18,6 @@ const Post = () => {
           setService(false)
         }
     }
-
 
   return (
     <section className="text-gray-600 body-font overflow-hidden">
@@ -92,7 +91,7 @@ const Post = () => {
           </div>
           <div className="flex ">
             <span className="title-font font-medium text-2xl text-gray-900">₹499.00</span>
-            <button className="flex items-center md:ml-8 text-white bg-pink-500 border-0 px-4 ml-1 md:px-6 focus:outline-none hover:bg-pink-600 rounded text-sm md:text-md">Add to Cart</button>
+            <button onClick={()=> {addToCart(slug,1, 499, 'wear the code(XL/RED)', "XL","RED")}} className="flex items-center md:ml-8 text-white bg-pink-500 border-0 px-4 ml-1 md:px-6 focus:outline-none hover:bg-pink-600 rounded text-sm md:text-md">Add to Cart</button>
             <button className="flex items-center md:ml-3 text-white bg-pink-500 border-0 px-4 ml-1 md:px-6 focus:outline-none hover:bg-pink-600 rounded text-sm">Buy Now</button>
             <button className="rounded-full w-10 h-10 bg-gray-200 p-0 border-0 inline-flex items-center justify-center text-gray-500 ml-4">
               <svg fill="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="w-5 h-5" viewBox="0 0 24 24">

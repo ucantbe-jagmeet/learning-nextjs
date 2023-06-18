@@ -2,7 +2,7 @@ import Head from 'next/head'
 
 export default function Home() {
   return (
-    <div classNameName="">
+    <div className="">
       <Head>
         <title>CodesWear Developers</title>
         <meta name="description" content="CodesWear.com - wear" />
@@ -11,7 +11,7 @@ export default function Home() {
 
         <div className=''>
         {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/home.jpg" alt="" classNameName='object-cover h-full'/>
+          <img src="/home.jpg" alt="" className='object-cover h-full w-full  md:h-[100vh] '/>
         </div>
 
      <section className="text-gray-600 body-font">

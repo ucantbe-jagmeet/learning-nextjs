@@ -3,7 +3,7 @@ import Logo from './Logo'
 import Link from 'next/link'
 import { AiOutlineShoppingCart, AiFillCloseCircle , AiFillPlusCircle , AiFillMinusCircle} from "react-icons/ai"
 
-const Navbar = () => {
+const Navbar = ({ cart, addToCart, removeFromCart, clearCart, subTotal }) => {
 
 const ref = useRef()
   const toggleCart = ()=>{
@@ -42,65 +42,27 @@ const ref = useRef()
             <AiFillCloseCircle/>
           </span>
             <ol className='list-decimal font-semibold'>
-              <li>
-              <div className='flex my-5'>
-                  <div className='w-2/3 font-semibold'>Tshirt - Wear the code 
-                  </div>
-                  <div className='w-1/3 font-semibold flex items-center justify-center '>
-                    <AiFillMinusCircle className='mx-1 text-lg text-pink-500 cursor-pointer'/>
-                      1
-                    <AiFillPlusCircle className='mx-1 text-lg text-pink-500 cursor-pointer'/>
-                  </div>
-              </div>
+			{ (Object.keys(cart).length ==0 )&& <div className='my-4'> No Items present in the cart</div>}
+              {Object.keys(cart).map((k)=>{
+
+				return <li key={k}>
+					<div className='flex my-5'>
+						<div className='w-2/3 font-semibold'>{cart[k].name}
+						</div>
+						<div className='w-1/3 font-semibold flex items-center justify-center '>
+							<AiFillMinusCircle className='mx-1 text-lg text-pink-500 cursor-pointer' onClick={()=>{
+								removeFromCart(cart[k].itemCode, 1, cart[k].price, cart[k].name , cart[k].size, cart[k].variant )
+							}}/>
+							{cart[k].qty}
+							<AiFillPlusCircle className='mx-1 text-lg text-pink-500 cursor-pointer' onClick={()=>{}}/>
+						</div>
+					</div>
               </li>
-              <li>
-              <div className='flex my-5'>
-                  <div className='w-2/3 font-semibold'>Tshirt - Wear the code 
-                  </div>
-                  <div className='w-1/3 font-semibold flex items-center justify-center '>
-                    <AiFillMinusCircle className='mx-1 text-lg text-pink-500 cursor-pointer'/>
-                      1
-                    <AiFillPlusCircle className='mx-1 text-lg text-pink-500 cursor-pointer'/>
-                  </div>
-              </div>
-              </li>
-              <li>
-              <div className='flex my-5'>
-                  <div className='w-2/3 font-semibold'>Tshirt - Wear the code 
-                  </div>
-                  <div className='w-1/3 font-semibold flex items-center justify-center '>
-                    <AiFillMinusCircle className='mx-1 text-lg text-pink-500 cursor-pointer'/>
-                      1
-                    <AiFillPlusCircle className='mx-1 text-lg text-pink-500 cursor-pointer'/>
-                  </div>
-              </div>
-              </li>
-              <li>
-              <div className='flex my-5'>
-                  <div className='w-2/3 font-semibold'>Tshirt - Wear the code 
-                  </div>
-                  <div className='w-1/3 font-semibold flex items-center justify-center '>
-                    <AiFillMinusCircle className='mx-1 text-lg text-pink-500 cursor-pointer'/>
-                      1
-                    <AiFillPlusCircle className='mx-1 text-lg text-pink-500 cursor-pointer'/>
-                  </div>
-              </div>
-              </li>
-              <li>
-              <div className='flex my-5'>
-                  <div className='w-2/3 font-semibold'>Tshirt - Wear the code 
-                  </div>
-                  <div className='w-1/3 font-semibold flex items-center justify-center '>
-                    <AiFillMinusCircle className='mx-1 text-lg text-pink-500 cursor-pointer'/>
-                      1
-                    <AiFillPlusCircle className='mx-1 text-lg text-pink-500 cursor-pointer'/>
-                  </div>
-              </div>
-              </li>
+			  })}
             </ol>
-         <div className="flex">
+         <div className="flex mt-5">
              <button className="flex mx-auto text-white bg-pink-500 border-0 py-1 px-6 focus:outline-none hover:bg-pink-600 rounded text-sm">Checkout</button>
-              <button className="flex mx-auto  text-white bg-pink-500 border-0 py-1 px-6 focus:outline-none hover:bg-pink-600 rounded text-sm">Clear Cart</button>
+              <button onClick={clearCart} className="flex mx-auto  text-white bg-pink-500 border-0 py-1 px-6 focus:outline-none hover:bg-pink-600 rounded text-sm">Clear Cart</button>
          </div>
           </div>
     </div>
