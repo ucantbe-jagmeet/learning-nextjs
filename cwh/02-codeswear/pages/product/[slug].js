@@ -1,6 +1,11 @@
 /* eslint-disable @next/next/no-img-element */
 import { useRouter } from "next/router";
 import { useState } from "react";
+import mongoose from 'mongoose'
+import Product from "../../models/Product";
+import connectDb from "../../middleware/mongoose";
+
+
 const Post = ({addToCart}) => {
     const router = useRouter()
     const { slug } = router.query
