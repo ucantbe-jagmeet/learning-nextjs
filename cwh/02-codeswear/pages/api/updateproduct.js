@@ -3,7 +3,7 @@ import connectDb from "../../middleware/mongoose"
 
 const handler = async ( req, res) => {
 
-    if(req.method==='POST'){
+    if(req.method === 'POST'){
         for (let i = 0; i < req.body.length; i++) {
             let p = await Product.findByIdAndUpdate(req.body[i]._id, req.body[i])
         }
@@ -12,6 +12,5 @@ const handler = async ( req, res) => {
     } else{
         res.status(400).json({error:'This Method is not Allowed'})
     }
-
 }
 export default connectDb(handler)
