@@ -45,6 +45,7 @@ export async function getServerSideProps(context){
   
   // let products = await Product.find({category:'tshirt'})  will do after some time
   let products = await Product.find()
+  
 
   return {
     props: {products : JSON.parse(JSON.stringify(products))}
