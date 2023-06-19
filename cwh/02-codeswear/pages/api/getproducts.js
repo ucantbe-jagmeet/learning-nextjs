@@ -4,7 +4,6 @@ import connectDb from "../../middleware/mongoose"
 const handler = async ( req, res) => {
     let products = await Product.find()
     // let tshirts = {}
-
     // for( let item of products){
     //     if (item.title in tshirts){
     //             if(!tshirts[item.title].color.includes(item.color) && item.availableQty > 0){
