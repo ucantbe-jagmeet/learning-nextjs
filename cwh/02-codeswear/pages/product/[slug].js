@@ -3,30 +3,32 @@ import { useRouter } from "next/router";
 import { useState } from "react";
 import mongoose from 'mongoose'
 import Product from "../../models/Product";
-import connectDb from "../../middleware/mongoose";
-
+import { ToastContainer, toast} from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 
 const Post = ({ variants, product , addToCart, buyNow}) => {
     const router = useRouter()
     const { slug } = router.query
     const [pin, setPin] = useState();
     const [service, setService] = useState();
-      console.log( variants , product);
+    console.log( variants , product);
     const checkServiceAbility = async()=>{
-        let pins = await fetch('http://localhost:3000/api/pincode')
-        let pinJson = await pins.json()
-
-        if(pinJson.includes(Number(pin))){
-          setService(true)
-        }
-        else {
-          setService(false)
-        }
+      let pins = await fetch('http://localhost:3000/api/pincode')
+      let pinJson = await pins.json()
+      
+      if(pinJson.includes(Number(pin))){
+        setService(true)
+        toast.success("Service Available")
+      }
+      else {
+        toast.error("Service not Available on this pincode")
+        setService(false)
+      }
     }
-
+    
     const [color, setColor] = useState(product.color);
     const [size, setSize] = useState(product.size);
-
+    
     const refreshVariants = ( newsize, newcolor) =>{
       let url = `http:localhost:3000/product/${variants[newcolor][newsize]['slug']}`
       window.location = url
@@ -35,9 +37,10 @@ const Post = ({ variants, product , addToCart, buyNow}) => {
    
   return (
     <section className="text-gray-600 body-font overflow-hidden">
+    <ToastContainer/>
     <div className="container px-5 py-20 mx-auto">
       <div className="lg:w-4/5 mx-auto flex flex-wrap">
-        <img alt="ecommerce" className="lg:w-1/2 w-full lg:h-[70vh] h-64 object-contain object-center rounded" src={product.img} />
+        <img alt="ecommerce" className="lg:w-1/2 w-full lg:h-[70vh] h-64 object-contain object-center rounded-md shadow-lg" src={product.img} />
         <div className="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
           <h2 className="text-sm title-font text-gray-500 tracking-widest">CODESWEAR</h2>
           <h1 className="text-gray-900 text-3xl title-font font-medium mb-1">{product.title} ({product.size}/{product.color})</h1>
