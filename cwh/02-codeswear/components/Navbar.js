@@ -27,10 +27,10 @@ const ref = useRef()
          </div>
          <div className="nav mt-1 tracking-wider">
             <ul className='flex items-center space-x-5 font-bold text-sm md:text-md '>
-                <Link href="/tshirts"><li className='hover:text-pink-600'>Tshirts</li></Link>
-                <Link href="/hoodies"><li className='hover:text-pink-600'>Hoodies</li></Link>
-                <Link href="/stickers"><li className='hover:text-pink-600'>Stickers</li></Link>
-                <Link href="/mugs"><li className='hover:text-pink-600'>Mugs</li></Link>
+                <li className='hover:text-pink-600'> <Link href="/tshirts">Tshirts</Link></li>
+                <li className='hover:text-pink-600'> <Link href="/hoodies">Hoodies</Link></li>
+                <li className='hover:text-pink-600'> <Link href="/mugs">Mugs</Link></li>
+                <li className='hover:text-pink-600'> <Link href="/stickers">Stickers</Link></li>
             </ul>
          </div>
          <div className="cart absolute justify-center right-5 top-3 cursor-pointer flex gap-4" >
@@ -40,7 +40,7 @@ const ref = useRef()
              <AiOutlineShoppingCart className='text-xl md:text-2xl '  onClick={toggleCart} />
          </div>
 
-        <div ref={ref} className="sideCart w-72 h-[100vh] absolute top-0 right-0 bg-pink-100 py-10 px-8 transform transition-transform translate-x-full shadow-l-">
+        <div ref={ref} className="sideCart w-72 h-[100vh] overflow-y-scrool absolute top-0 right-0 bg-pink-100 py-10 px-8 transform transition-transform translate-x-full">
           <h2 className='font-bold text-xl text-center'>Shopping Cart</h2>
           <span onClick={toggleCart} className='absolute top-3 right-3 cursor-pointer text-2xl text-pink-500' >
             <AiFillCloseCircle/>

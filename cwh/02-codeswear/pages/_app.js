@@ -2,12 +2,13 @@ import { useEffect, useState } from 'react'
 import Footer from '../components/Footer'
 import Navbar from '../components/Navbar'
 import '../styles/globals.css'
+import { useRouter } from 'next/router'
 
 function MyApp({ Component, pageProps }) {
 
   const [cart, setCart] = useState({});
   const [subTotal, setSubTotal] = useState(0);
-
+  const router = useRouter()
   useEffect(()=>{
     try {
       if(localStorage.getItem("cart")){
@@ -60,9 +61,16 @@ function MyApp({ Component, pageProps }) {
     saveCart({})
   }
 
+  const buyNow =(itemCode, qty, price, name, size, variant)=>{
+    saveCart({})
+    let newCart= { itemCode : {qty:1, price, name ,size, variant}}
+    setCart(newCart)
+    saveCart(newCart)
+    router.push('/checkout')
+  }
   return <>
     <Navbar cart={cart} addToCart={addToCart}  removeFromCart={removeFromCart} clearCart={clearCart} subTotal={subTotal}   />
-      <Component cart={cart}  addToCart={addToCart}  removeFromCart={removeFromCart} clearCart={clearCart} subTotal={subTotal} {...pageProps} />
+      <Component cart={cart} buyNow={buyNow} addToCart={addToCart}  removeFromCart={removeFromCart} clearCart={clearCart} subTotal={subTotal} {...pageProps} />
     <Footer/>
   </>
 }

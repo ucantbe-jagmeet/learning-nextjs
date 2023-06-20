@@ -66,14 +66,14 @@ const Checkout = ({ cart, addToCart, removeFromCart, clearCart, subTotal}) => {
 
           <h2 className='font-semibold text-xl'>2. Review Cart Items</h2>
 
-          <div className="sideCart h-auto bg-pink-100 py-5 mt-5 px-8 ">
+          <div className="sideCart h-auto bg-red-100 py-5 mt-5 px-8 ">
              <ol className='list-decimal font-semibold'>
               { (Object.keys(cart).length ==0 )&& <div className='my-4'> No Items present in the cart</div>}
                   {Object.keys(cart).map((k)=>{
                     return <li key={k}>
                           <div className='flex my-5 items-center '>
                             <div className='font-semibold capitalize text-md'>
-                                {cart[k].name}
+                                {cart[k].name} ({cart[k].size}/{cart[k].variant})
                             </div>
                             <div className=' font-semibold flex text-lg  items-center justify-center ml-4 '>
                               <AiFillMinusCircle className='mx-1  text-pink-500 cursor-pointer' onClick={()=>{
