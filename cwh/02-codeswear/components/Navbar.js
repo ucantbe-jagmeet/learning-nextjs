@@ -25,12 +25,12 @@ const ref = useRef()
                 <Logo/>
             </Link>
          </div>
-         <div className="nav">
+         <div className="nav mt-1 tracking-wider">
             <ul className='flex items-center space-x-5 font-bold text-sm md:text-md '>
-                <Link href="/tshirts"><li>Tshirts</li></Link>
-                <Link href="/hoodies"><li>Hoodies</li></Link>
-                <Link href="/stickers"><li>Stickers</li></Link>
-                <Link href="/mugs"><li>Mugs</li></Link>
+                <Link href="/tshirts"><li className='hover:text-pink-600'>Tshirts</li></Link>
+                <Link href="/hoodies"><li className='hover:text-pink-600'>Hoodies</li></Link>
+                <Link href="/stickers"><li className='hover:text-pink-600'>Stickers</li></Link>
+                <Link href="/mugs"><li className='hover:text-pink-600'>Mugs</li></Link>
             </ul>
          </div>
          <div className="cart absolute justify-center right-5 top-3 cursor-pointer flex gap-4" >
@@ -51,7 +51,7 @@ const ref = useRef()
 
 				return <li key={k}>
 					<div className='flex my-5'>
-						<div className='w-2/3 font-semibold'>{cart[k].name}
+						<div className='w-2/3 font-semibold'>{cart[k].name} ({cart[k].size}/{cart[k].variant})
 						</div>
 						<div className='w-1/3 font-semibold flex items-center justify-center '>
 							<AiFillMinusCircle className='mx-1 text-lg text-pink-500 cursor-pointer' onClick={()=>{
