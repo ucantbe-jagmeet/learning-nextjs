@@ -1,6 +1,8 @@
 import Link from 'next/link'
 import React, { useState } from 'react'
 import Logo from '../components/Logo'
+import { ToastContainer, toast} from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 
 const Signup = () => {
   const [name, setName] = useState();
@@ -20,13 +22,24 @@ const handleSubmit = async (e)=>{
   }).then(response => response.text())
 		  .then(data => {
 			console.log('Success:', data);
+      
       setEmail('')
       setName('')
       setPassword('')
 		  })
 		  .catch((error) => {
 			console.error('Error:', error);
-		  });
+		  }).finally(()=>{
+        toast.success('User added successfully !!!! ✅', {
+        position: "top-right",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: false,
+        draggable: true,
+        theme: "light",
+        });
+      })
  
 }
 const handleChange = (e)=>{
@@ -42,6 +55,18 @@ const handleChange = (e)=>{
 }
   return (
     <div className="flex min-h-full flex-col justify-center px-6 py-12 my-10 lg:px-8">
+    <ToastContainer
+        position="top-right"
+        autoClose={2000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover={false}
+        theme="light"
+        />
     <div className="sm:mx-auto sm:w-full sm:max-w-sm">
         <div className="flex justify-center">
           <Logo />
