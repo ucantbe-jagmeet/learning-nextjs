@@ -13,35 +13,28 @@ const handleSubmit = async (e)=>{
   e.preventDefault();
 
   const data= { name , email, password}
-  fetch('http://localhost:3000/api/signup',  {
-    method: 'POST', 
-    headers: {
-    'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(data),
-  }).then(response => response.text())
-		  .then(data => {
-			console.log('Success:', data);
-      
-      setEmail('')
-      setName('')
-      setPassword('')
-		  })
-		  .catch((error) => {
-			console.error('Error:', error);
-		  }).finally(()=>{
-        toast.success('User added successfully !!!! ✅', {
-        position: "top-right",
-        autoClose: 2000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: false,
-        draggable: true,
-        theme: "light",
-        });
-      })
- 
+
+    const res = await fetch('http://localhost:3000/api/signup',  {
+      method: 'POST', 
+      headers: {
+      'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data),
+    })
+
+    const response = await res.json()
+    console.log(response);
+
+    setEmail('')
+    setName('')
+    setPassword('')
+
+    toast.success('Your account has been created!', {
+      autoClose:2000
+    })
+
 }
+
 const handleChange = (e)=>{
   if(e.target.name == 'name'){
     setName(e.target.value)

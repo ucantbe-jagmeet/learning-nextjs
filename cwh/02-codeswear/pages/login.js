@@ -4,61 +4,53 @@ import Logo from '../components/Logo'
 import Link from 'next/link'
 import { ToastContainer, toast} from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
+import { useRouter } from 'next/router'
+
+
 
 const Login = () => {
 
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
+  const router = useRouter()
 
-const handleSubmit = async (e)=>{
-  e.preventDefault();
-
-  const data= {email, password}
-  fetch('http://localhost:3000/api/login',  {
-    method: 'POST', 
-    headers: {
-    'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(data),
-  }).then(response => response.text())
-		  .then((data) => {
-			if(data){
-        setEmail('')
-        setPassword('')
-      } else{
-        console.log('Not Success:');
-      }
-      
-		  })
-		  .catch((error) => {
-			console.error('Error:', error);
-     
-		  }).finally((data)=>{
-       if(data){
-        toast.success('User logged in !!!! ✅', {
-          position: "top-right",
-          autoClose: 2000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: false,
-          draggable: true,
-          theme: "light",
-          });
-       }
-       else{
-        toast.error('No user found', {
-          position: "top-right",
-          autoClose: 2000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: false,
-          draggable: true,
-          theme: "light",
-          });
-       }
+  const handleSubmit = async (e)=>{
+    e.preventDefault();
+  
+    const data= { email, password}
+  
+      const res = await fetch('http://localhost:3000/api/login',  {
+        method: 'POST', 
+        headers: {
+        'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
       })
- 
+  
+      const response = await res.json()
+      console.log(response);
+
+      if(response.success){
+        localStorage.setItem('token', response.token)
+          toast.success('You are successfully login !', {
+            autoClose:2000
+          })
+         
+          setInterval(() => {
+            router.push('http://localhost:3000')
+          }, 1500);
+      } 
+      else{
+        toast.error(response.error, {
+          autoClose:2000
+        })
+      }
+
+      setEmail('')
+      setPassword('')
+  
 }
+
 const handleChange = (e)=>{
   if(e.target.name == 'email'){
     setEmail(e.target.value)
