@@ -40,16 +40,16 @@ const Navbar = ({ user,cart, addToCart, removeFromCart, clearCart, subTotal,logo
          
           <div onClick={()=>setDropdown(!dropdown)}>
           {
-              dropdown &&  ( <div className="absolute right-10 bg-pink-300 top-7 rounded-md px-5 w-32" >
+              dropdown &&  ( <div className="absolute right-10 bg-pink-100 py-5 top-7 rounded-md px-5 w-32 shadow-xl" >
                   <ul className='font-semibold text-gray-600'>
                     <Link href='/myaccount'>
-                      <li className='py-2 text-sm hover:text-white'>My Account</li>
+                      <li className='py-2 text-sm hover:text-pink-500'>My Account</li>
                     </Link>
                     <Link href='/orders'>
-                      <li className='py-2 text-sm hover:text-white'>Orders</li>
+                      <li className='py-2 text-sm hover:text-pink-500'>Orders</li>
                     </Link>
                     <a>
-                      <li onClick={logout} className='py-2 text-sm hover:text-white'>Logout</li>
+                      <li onClick={logout} className='py-2 text-sm hover:text-pink-500'>Logout</li>
                     </a>
                    
                   </ul>
@@ -59,7 +59,7 @@ const Navbar = ({ user,cart, addToCart, removeFromCart, clearCart, subTotal,logo
             { user.value &&  <MdAccountCircle className='text-xl md:text-2xl '/>}
           </div>
 
-            { !user.value &&  <Link href="/login" >
+            { !user.value &&  <Link href="/login">
                   <button className='bg-pink-600 px-3 py-1 rounded-md text-white text-sm' >Login</button>
               </Link>   
             }

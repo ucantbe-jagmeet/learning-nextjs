@@ -1,5 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
-import {useState} from 'react'
+import {useEffect, useState} from 'react'
 import Logo from '../components/Logo'
 import Link from 'next/link'
 import { ToastContainer, toast} from 'react-toastify'
@@ -7,12 +7,18 @@ import 'react-toastify/dist/ReactToastify.css'
 import { useRouter } from 'next/router'
 
 
-
 const Login = () => {
 
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
   const router = useRouter()
+
+
+  useEffect(()=>{
+    if(localStorage.getItem('token')){
+      router.push('/')
+    }
+  },[])
 
   const handleSubmit = async (e)=>{
     e.preventDefault();
