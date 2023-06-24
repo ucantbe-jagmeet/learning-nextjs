@@ -35,7 +35,6 @@ const Login = () => {
           toast.success('You are successfully login !', {
             autoClose:2000
           })
-         
           setInterval(() => {
             router.push('http://localhost:3000')
           }, 1500);
