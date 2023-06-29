@@ -2,7 +2,11 @@ import React from 'react'
 
 const Orders = () => {
   return (
-    <div>orders</div>
+    <div>
+        <div className="container bg-slate-400 mx-auto">
+                s
+        </div>
+    </div>
   )
 }
 
