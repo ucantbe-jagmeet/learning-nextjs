@@ -10,7 +10,7 @@ export async function GET(request){
             const movies = database.collection('inventory');
             
             const query = {}
-            const movie = await movies.findOne(query);
+            const movie = await movies.find(query).toArray();
             console.log(movie);
             return NextResponse.json({ "a":34, movie})
         } finally  {
