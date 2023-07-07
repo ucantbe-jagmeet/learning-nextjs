@@ -16,5 +16,4 @@ export async function GET(request){
         } finally  {
             await client.close()
         }
-
 }
