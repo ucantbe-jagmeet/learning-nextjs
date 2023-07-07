@@ -1,6 +1,37 @@
+'use client'
 import Header from '@/components/Header'
+import { useState } from 'react'
 
 export default function Home() {
+
+  const [productForm, setProductForm] = useState({});
+
+  const addProduct = async ()=>{
+    e.preventDefault();
+
+    try {
+      const response = await fetch('/api/products',{
+        method:'POST',
+        headers:{
+          'Content-Type':'application/json'
+        },
+        body:JSON.stringify(productData)
+      })
+
+      if(response.ok){
+        console.log('product added successfully');
+      } else{
+        console.log('error adding product');
+      }
+    } catch (error) {
+      console.log('Error',error);
+    }
+  }
+
+  const handleChange =(e)=>{
+    setProductForm({...productForm, [e.target.name]:e.target.value})
+  }
+
   return (
     <>
            <Header />
@@ -43,20 +74,20 @@ export default function Home() {
         <form>
           <div className="mb-4">
             <label htmlFor="productName" className="block mb-2">Product Slug</label>
-            <input  name='slug'  type="text" id="productName" className="w-full border border-gray-300 px-4 py-2" />
+            <input onChange={handleChange}  name='slug'  type="text" id="productName" className="w-full border border-gray-300 px-4 py-2" />
           </div>
 
           <div className="mb-4">
             <label htmlFor="quantity" className="block mb-2">Quantity</label>
-            <input  name='quantity'  type="number" id="quantity" className="w-full border border-gray-300 px-4 py-2" />
+            <input onChange={handleChange}  name='quantity'  type="number" id="quantity" className="w-full border border-gray-300 px-4 py-2" />
           </div>
 
           <div className="mb-4">
             <label htmlFor="price" className="block mb-2">Price</label>
-            <input  name='price'  type="number" id="price" className="w-full border border-gray-300 px-4 py-2" />
+            <input onChange={handleChange}  name='price'  type="number" id="price" className="w-full border border-gray-300 px-4 py-2" />
           </div>
 
-          <button type="submit" className="bg-purple-500 hover:bg-purple-600 text-white px-4 py-2 rounded-lg shadow-md font-semibold">
+          <button onClick={addProduct} type="submit" className="bg-purple-500 hover:bg-purple-600 text-white px-4 py-2 rounded-lg shadow-md font-semibold">
             Add Product
           </button>
 

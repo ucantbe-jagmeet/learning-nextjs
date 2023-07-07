@@ -25,7 +25,7 @@ export async function POST(request){
             const database = client.db('stock');
             const inventary = database.collection('inventory');
             const product = await inventary.insertOne(body);
-            return NextResponse.json({ product})
+            return NextResponse.json({ product , ok:true})
         } finally  {
             await client.close()
         }
