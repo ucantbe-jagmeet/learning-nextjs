@@ -1,4 +1,4 @@
-'use client'
+"use client";
 import Header from '@/components/Header'
 import { useState } from 'react'
 
@@ -6,16 +6,16 @@ export default function Home() {
 
   const [productForm, setProductForm] = useState({});
 
-  const addProduct = async ()=>{
+  const addProduct = async (e)=>{
     e.preventDefault();
 
     try {
-      const response = await fetch('/api/products',{
+      const response = await fetch('/api/product',{
         method:'POST',
         headers:{
           'Content-Type':'application/json'
         },
-        body:JSON.stringify(productData)
+        body:JSON.stringify(productForm)
       })
 
       if(response.ok){

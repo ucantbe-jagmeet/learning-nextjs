@@ -18,11 +18,11 @@ export async function GET(request){
 }
 
 export async function POST(request){
-    let body = request.body
+    let body = await request.json()
     const uri = process.env.MONGO_URI;
     const client = new MongoClient(uri)
         try {
-            const database = client.db('stock');
+            const database = client.db('03-stock');
             const inventary = database.collection('inventory');
             const product = await inventary.insertOne(body);
             return NextResponse.json({ product , ok:true})
