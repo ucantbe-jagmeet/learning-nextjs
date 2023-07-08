@@ -6,14 +6,7 @@ export default function Home() {
   const [productForm, setProductForm] = useState({});
   const [products, setProducts] = useState([]);
   const [alert, setAlert] = useState("");
-  const [dropdown, setDropdown] = useState([
-    {
-      _id: "64a96d89677819981f76d79e",
-      slug: "jordam",
-      quantity: "11",
-      price: "1100",
-    },
-  ]);
+  const [dropdown, setDropdown] = useState([]);
 
   const [loading, setLoading] = useState(false);
   const [query, setQuery] = useState("");
@@ -85,7 +78,7 @@ export default function Home() {
       setProducts(rjson.products);
     };
     fetchProducts();
-  }, [products]);
+  }, []);
 
   const onDropdownEdit = async (e) => {
     setQuery(e.target.value);
