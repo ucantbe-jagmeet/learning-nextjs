@@ -124,7 +124,7 @@ export default function Home() {
           <tbody>
             {products.map(product => {
               return <tr key={product.slug}>
-                <td className="border px-4 py-2 text-center">{product.slug}</td>
+                <td className="border px-4 py-2 ">{product.slug}</td>
                 <td className="border px-4 py-2 text-center">{product.quantity}</td>
                 <td className="border px-4 py-2 text-center">₹{product.price}</td>
               </tr>
