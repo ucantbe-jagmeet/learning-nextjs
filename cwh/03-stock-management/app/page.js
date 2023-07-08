@@ -6,6 +6,7 @@ export default function Home() {
   
   const [productForm, setProductForm] = useState({});
   const [products, setProducts] = useState([]);
+  const [alert, setAlert] = useState('');
   
   
   const addProduct = async (e)=>{
@@ -22,6 +23,9 @@ export default function Home() {
       
       if(response.ok){
         console.log('product added successfully');
+        setAlert('Your Product has been added!!!');
+        setProductForm({})
+        
       } else{
         console.log('error adding product');
       }
@@ -48,7 +52,7 @@ export default function Home() {
     <>
            <Header />
       <div className="container mx-auto px-10 ">
-        <div className='text-green-800 text-center'>alert</div>
+        <div className='text-green-800 text-center'>{alert}</div>
         <h1 className="text-3xl font-semibold mb-6">Search a Product</h1>
         <div className="flex mb-2">
           <input  type="text" placeholder="Enter a product name" className="flex-1 border border-gray-300 px-4 py-2 rounded-l-md" />
@@ -86,17 +90,17 @@ export default function Home() {
         <form>
           <div className="mb-4">
             <label htmlFor="productName" className="block mb-2">Product Slug</label>
-            <input onChange={handleChange}  name='slug'  type="text" id="productName" className="w-full border border-gray-300 px-4 py-2" />
+            <input value={productForm?.slug || ""} onChange={handleChange}  name='slug'  type="text" id="productName" className="w-full border border-gray-300 px-4 py-2" />
           </div>
 
           <div className="mb-4">
             <label htmlFor="quantity" className="block mb-2">Quantity</label>
-            <input onChange={handleChange}  name='quantity'  type="number" id="quantity" className="w-full border border-gray-300 px-4 py-2" />
+            <input value={productForm?.quantity || ""} onChange={handleChange}  name='quantity'  type="number" id="quantity" className="w-full border border-gray-300 px-4 py-2" />
           </div>
 
           <div className="mb-4">
             <label htmlFor="price" className="block mb-2">Price</label>
-            <input onChange={handleChange}  name='price'  type="number" id="price" className="w-full border border-gray-300 px-4 py-2" />
+            <input value={productForm?.price || ""} onChange={handleChange}  name='price'  type="number" id="price" className="w-full border border-gray-300 px-4 py-2" />
           </div>
 
           <button onClick={addProduct} type="submit" className="bg-purple-500 hover:bg-purple-600 text-white px-4 py-2 rounded-lg shadow-md font-semibold">
