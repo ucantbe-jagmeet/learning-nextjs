@@ -6,11 +6,11 @@ export async function GET(request){
     const uri = process.env.MONGO_URI;
     const client = new MongoClient(uri)
         try {
-            const database = client.db('stock');
+            const database = client.db('03-stock');
             const inventary = database.collection('inventory');
             const query = {}
-            const allProducts = await inventary.find(query).toArray();
-            return NextResponse.json({ allProducts})
+            const products = await inventary.find(query).toArray();
+            return NextResponse.json({ products, success:true})
         } finally  {
             await client.close()
         }

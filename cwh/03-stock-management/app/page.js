@@ -1,14 +1,16 @@
 "use client";
 import Header from '@/components/Header'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 export default function Home() {
-
+  
   const [productForm, setProductForm] = useState({});
-
+  const [products, setProducts] = useState([]);
+  
+  
   const addProduct = async (e)=>{
     e.preventDefault();
-
+    
     try {
       const response = await fetch('/api/product',{
         method:'POST',
@@ -17,7 +19,7 @@ export default function Home() {
         },
         body:JSON.stringify(productForm)
       })
-
+      
       if(response.ok){
         console.log('product added successfully');
       } else{
@@ -32,6 +34,16 @@ export default function Home() {
     setProductForm({...productForm, [e.target.name]:e.target.value})
   }
 
+  useEffect(()=>{
+    const fetchProducts = async()=>{
+         const response = await fetch('/api/product')
+         let rjson = await response.json()
+         setProducts(rjson.products)
+    }
+    fetchProducts()
+  },[])
+  
+  
   return (
     <>
            <Header />
@@ -106,13 +118,13 @@ export default function Home() {
             </tr>
           </thead>
           <tbody>
-            {/* {products.map(product => {
+            {products.map(product => {
               return <tr key={product.slug}>
-                <td className="border px-4 py-2">{product.slug}</td>
-                <td className="border px-4 py-2">{product.quantity}</td>
-                <td className="border px-4 py-2">₹{product.price}</td>
+                <td className="border px-4 py-2 text-center">{product.slug}</td>
+                <td className="border px-4 py-2 text-center">{product.quantity}</td>
+                <td className="border px-4 py-2 text-center">₹{product.price}</td>
               </tr>
-            })} */}
+            })}
 
           </tbody>
         </table>
