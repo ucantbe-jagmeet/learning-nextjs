@@ -10,15 +10,26 @@ const page = () => {
   const [user, setUser] = useState({
     email: "",
     password: "",
+    username: "",
   });
 
-  const onlogin = async () => {};
+  const onSignup = async () => {};
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen py-2">
-      <h2>login</h2>
+      <h2>Signup</h2>
       <hr />
 
+      <label htmlFor="username">username</label>
+      <input
+        type="text"
+        name="username"
+        id="username"
+        value={user.username}
+        onChange={(e) => setUser({ ...user, username: e.target.value })}
+        placeholder="username"
+        className="p-2 border border-gray-300 rounded-md mb-4 focus:outline-none focus:border-gray-600"
+      />
       <label htmlFor="email">email</label>
       <input
         type="email"
@@ -40,16 +51,16 @@ const page = () => {
         className="p-2 border border-gray-300 rounded-md mb-4 focus:outline-none focus:border-gray-600"
       />
       <button
-        onClick={onlogin}
+        onClick={onSignup}
         className="p-2 border border-gray-300 rounded-lg mb-4 outline-none focus:border-gray-600"
       >
-        login here
+        Signup here
       </button>
       <Link
         href="/login"
         className="p-2 border border-gray-300 rounded-lg mb-4 outline-none focus:border-gray-600"
       >
-        Visit signup page
+        Visit login page
       </Link>
     </div>
   );
