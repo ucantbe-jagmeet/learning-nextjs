@@ -46,7 +46,7 @@ const page = () => {
         login here
       </button>
       <Link
-        href="/login"
+        href="/signup"
         className="p-2 border border-gray-300 rounded-lg mb-4 outline-none focus:border-gray-600"
       >
         Visit signup page
