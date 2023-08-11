@@ -4,19 +4,36 @@
 // import { axios } from "axios";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 const page = () => {
+  const router = useRouter();
   const [user, setUser] = useState({
     email: "",
     password: "",
     username: "",
   });
 
-  const onSignup = async () => {};
+  const [buttonDisabled, setButtonDisabled] = useState(false);
+
+  const onSignup = async () => {
+    console.log(user);
+  };
+
+  useEffect(() => {
+    if (
+      user.email.length > 0 &&
+      user.password.length > 0 &&
+      user.username.length > 0
+    ) {
+      setButtonDisabled(false);
+    } else {
+      setButtonDisabled(true);
+    }
+  }, [user]);
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen py-2">
+    <div className="flex flex-col items-center justify-center min-h-screen py-2  text-black">
       <h2>Signup</h2>
       <hr />
 
@@ -28,7 +45,7 @@ const page = () => {
         value={user.username}
         onChange={(e) => setUser({ ...user, username: e.target.value })}
         placeholder="username"
-        className="p-2 border border-gray-300 rounded-md mb-4 focus:outline-none focus:border-gray-600"
+        className=" p-2 border border-gray-300 rounded-md mb-4 focus:outline-none focus:border-gray-600"
       />
       <label htmlFor="email">email</label>
       <input
@@ -52,13 +69,13 @@ const page = () => {
       />
       <button
         onClick={onSignup}
-        className="p-2 border border-gray-300 rounded-lg mb-4 outline-none focus:border-gray-600"
+        className="p-2 border border-gray-300 rounded-lg mb-4 outline-none focus:border-gray-600 text-white"
       >
-        Signup here
+        {buttonDisabled ? "No signup" : "Signup"}
       </button>
       <Link
         href="/login"
-        className="p-2 border border-gray-300 rounded-lg mb-4 outline-none focus:border-gray-600"
+        className="p-2 border border-gray-300 rounded-lg mb-4 outline-none focus:border-gray-600 text-white"
       >
         Visit login page
       </Link>
