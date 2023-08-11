@@ -1,10 +1,11 @@
 "use client";
 
 /* eslint-disable react-hooks/rules-of-hooks */
-// import { axios } from "axios";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
+import axios from "axios";
+import { toast } from "react-hot-toast";
 
 const page = () => {
   const router = useRouter();
@@ -15,9 +16,19 @@ const page = () => {
   });
 
   const [buttonDisabled, setButtonDisabled] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const onSignup = async () => {
-    console.log(user);
+    try {
+      setLoading(true);
+      const response = await axios.post("/api/users/signup", user);
+      console.log("Signup success", response.data);
+      setLoading(false);
+      router.push("/login");
+    } catch (error: any) {
+      console.log("Signup failed", error.message);
+      toast.error(error.message);
+    }
   };
 
   useEffect(() => {
@@ -34,7 +45,9 @@ const page = () => {
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen py-2  text-black">
-      <h2>Signup</h2>
+      <h2 className="text-white text-2xl capitalize">
+        {loading ? "Processing" : "signup"}
+      </h2>
       <hr />
 
       <label htmlFor="username">username</label>
@@ -69,6 +82,7 @@ const page = () => {
       />
       <button
         onClick={onSignup}
+        type="submit"
         className="p-2 border border-gray-300 rounded-lg mb-4 outline-none focus:border-gray-600 text-white"
       >
         {buttonDisabled ? "No signup" : "Signup"}
